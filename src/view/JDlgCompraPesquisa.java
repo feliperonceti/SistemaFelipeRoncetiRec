@@ -5,7 +5,6 @@
  */
 package view;
 
-import bean.ClienteFgv;
 import bean.CompraFgv;
 import dao.Compra_DAO;
 import java.util.List;

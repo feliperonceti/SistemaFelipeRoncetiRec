@@ -13,21 +13,21 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Felipe Ronceti
  */
-public class ProdutoControlle extends AbstractTableModel {
 
-    private List lista;
 
+public class ProdutoControlle extends AbstractTableModel{
+     private List lista;
+    
     public void setList(List lista) {
         this.lista = lista;
-        this.fireTableDataChanged();
-
+        
     }
-
+    
     public ProdutoFgv getBean(int linha) {
         return (ProdutoFgv) lista.get(linha);
-
+           
     }
-
+    
     @Override
     public int getRowCount() {
         return lista.size();
@@ -40,11 +40,11 @@ public class ProdutoControlle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-
+        
         ProdutoFgv produto = (ProdutoFgv) lista.get(rowIndex);
-
+        
         if (columnIndex == 0) {
-
+       
             return produto.getIdprodutoFgv();
         }
         if (columnIndex == 1) {
@@ -58,7 +58,7 @@ public class ProdutoControlle extends AbstractTableModel {
         }
         return "";
     }
-
+    
     @Override
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
@@ -76,4 +76,9 @@ public class ProdutoControlle extends AbstractTableModel {
         return "";
     }
 
+  
 }
+
+    
+
+

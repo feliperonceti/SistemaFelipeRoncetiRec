@@ -1,5 +1,5 @@
 package bean;
-// Generated 18/12/2023 10:00:26 by Hibernate Tools 4.3.1
+// Generated 30/11/2023 20:03:49 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -106,7 +106,7 @@ public class UsuarioFgv  implements java.io.Serializable {
     }
 
     
-    @Column(name="nivel_fgv", nullable=false, length=20)
+    @Column(name="nivel_fgv", nullable=false, length=10)
     public String getNivelFgv() {
         return this.nivelFgv;
     }

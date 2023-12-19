@@ -19,11 +19,12 @@ import tools.Util;
  * @author Felipe Ronceti
  */
 public class JDlgCliente extends javax.swing.JDialog {
-
+    
     boolean incluindo;
-    MaskFormatter mascaraCpf;
+    MaskFormatter mascaraCpf;  
     public ClienteFgv clienteFgv;
     public Cliente_DAO cliente_DAO;
+    
 
     /**
      * Creates new form JDlgCliente
@@ -31,54 +32,58 @@ public class JDlgCliente extends javax.swing.JDialog {
     public JDlgCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        
         setTitle("Cadastro de Cliente");
         setLocationRelativeTo(null);
         cliente_DAO = new Cliente_DAO();
-        clienteFgv = new ClienteFgv();
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
+        
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade);
-
-        try {
-
-            mascaraCpf = new MaskFormatter("###.###.###-##");
-
-        } catch (ParseException ex) {
+        
+         try {
+            
+             mascaraCpf = new MaskFormatter("###.###.###-##");
+            
+             
+        } catch  (ParseException ex) {
             Logger.getLogger(JDlgCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-
+         
+       jFmtCpf.setFormatterFactory( new DefaultFormatterFactory( mascaraCpf )); 
+       
+        
     }
 
+    
+    
+    
     public ClienteFgv viewBean() {
-        clienteFgv = new ClienteFgv();
+        ClienteFgv clienteFgv = new ClienteFgv();
         int id = Integer.valueOf(jTxtCodigo.getText());
-        clienteFgv.setIdclienteFgv(id);
+        clienteFgv.setIdclienteFgv(id); 
         clienteFgv.setNomeFgv(jTxtNome.getText());
         clienteFgv.setApelidoFgv(jTxtApelido.getText());
-        clienteFgv.setCpfFgv(jFmtCpf.getText());
-        clienteFgv.setRgFgv(jFmtRg.getText());
-        clienteFgv.setCepFgv(jFmtCep.getText());
+        clienteFgv.setCpfFgv(jFmtCpf.getText());    
+        clienteFgv.setRgFgv(jFmtRg.getText());  
+        clienteFgv.setCepFgv(jFmtCep.getText());  
         clienteFgv.setEnderecoFgv(jTxtEndereco.getText());
         clienteFgv.setTelefoneFgv(jFmtTelefone.getText());
         clienteFgv.setBairroFgv(jTxtBairro.getText());
         clienteFgv.setEstadocivilFgv(jTxtEstadocivil.getText());
         clienteFgv.setSexoFgv(jTxtSexo.getText());
         clienteFgv.setCnpjFgv(jFmtCnpj.getText());
-        clienteFgv.setEmailFgv(jTxtEmail.getText());
+        clienteFgv.setEmailFgv(jTxtEmail.getText ());
         clienteFgv.setUfFgv(jTxtUf.getText());
         clienteFgv.setNacionalidadeFgv(jTxtNacionalidade.getText());
-
-        return clienteFgv;
+      
+    return clienteFgv;
     }
-
-    public void beanView(ClienteFgv clienteFgv) {
+    
+    
+     public void beanView(ClienteFgv clienteFgv) {
         String cad = String.valueOf(clienteFgv.getIdclienteFgv());
-        jTxtCodigo.setText(cad);
+        jTxtCodigo.setText(cad);   
         jTxtNome.setText(clienteFgv.getNomeFgv());
         jTxtApelido.setText(clienteFgv.getApelidoFgv());
         jFmtCpf.setText(clienteFgv.getCpfFgv());
@@ -93,9 +98,11 @@ public class JDlgCliente extends javax.swing.JDialog {
         jTxtEmail.setText(clienteFgv.getEmailFgv());
         jTxtUf.setText(clienteFgv.getUfFgv());
         jTxtNacionalidade.setText(clienteFgv.getNacionalidadeFgv());
-
+               
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -392,22 +399,22 @@ public class JDlgCliente extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
+       Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade);
+        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade);
 
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
+ // TODO add your handling code here:
+       Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
+        
         incluindo = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
@@ -421,51 +428,51 @@ public class JDlgCliente extends javax.swing.JDialog {
 
             Util.mensagem("Exclusão cancelada.");
         }
+        
+       Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+       jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade);
 
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade);
-
-
+      
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
 
-        // TODO add your handling code here:
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade);
-
-        Util.mensagem(" Cancelada ");
-
-
+       // TODO add your handling code here:
+       Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade,jTxtEmail, jBtnCancelar, jBtnConfirmar);
+       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        
+       Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+       jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade);
+        
+       Util.mensagem(" Cancelada ");
+        
+        
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
 
         clienteFgv = viewBean();
-        cliente_DAO = new Cliente_DAO();
+
         if (incluindo == true) {
             cliente_DAO.insert(clienteFgv);
         } else {
             cliente_DAO.update(clienteFgv);
         }
 
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtRg,
-                jFmtCep, jTxtEndereco, jFmtTelefone, jTxtBairro, jTxtEstadocivil, jTxtSexo, jFmtCnpj, jTxtUf, jTxtNacionalidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido,jFmtCpf, jFmtRg,
+        jFmtCep, jTxtEndereco, jFmtTelefone,jTxtBairro,jTxtEstadocivil,jTxtSexo,jFmtCnpj,jTxtUf,jTxtNacionalidade,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-
+         
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgClientePesquisa jDlgClientePesquisa = new JDlgClientePesquisa(null, true);
-
+ JDlgClientePesquisa jDlgClientePesquisa = new JDlgClientePesquisa(null, true);
+       
         jDlgClientePesquisa.setTelaAnterior(this);
         jDlgClientePesquisa.setVisible(true);
-
+                
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jFmtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtRgActionPerformed

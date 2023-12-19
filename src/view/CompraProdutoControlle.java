@@ -5,54 +5,29 @@
  */
 package view;
 
-import bean.CompraprodutoFgv;
+import bean.CompraFgv;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import tools.Util;
 
 /**
  *
+ * @author Felipe Ronceti
  */
+
 public class CompraProdutoControlle extends AbstractTableModel {
+    private List<CompraFgv> lista; // Change the type of the list to CompraFgv
 
-    private List lista;
-
-    public void setList(List lista) {
+    public void setList(List<CompraFgv> lista) {
         this.lista = lista;
-        this.fireTableDataChanged();
     }
 
-    public CompraprodutoFgv getBean(int linha) {
-        return (CompraprodutoFgv) lista.get(linha);
-    }
-
-    public void addBean(CompraprodutoFgv compraProdutoFgv) {
-        lista.add(compraProdutoFgv);
-        this.fireTableDataChanged();
-    }
-
-    public void removeBean(int index) {
-
-        lista.remove(index);
-        this.fireTableDataChanged();
-
-    }
-
-    public void updateBean(int index, CompraprodutoFgv compraProdutoFgv) {
-
-        lista.set(index, compraProdutoFgv);
-        this.fireTableDataChanged();
-
+    public CompraFgv getBean(int linha) {
+        return lista.get(linha);
     }
 
     @Override
     public int getRowCount() {
-        return lista.size();
-    }
-
-    public void limparTabela() {
-        lista.clear();
-        this.fireTableDataChanged();
+        return (lista != null) ? lista.size() : 0; // Check if lista is not null
     }
 
     @Override
@@ -61,48 +36,36 @@ public class CompraProdutoControlle extends AbstractTableModel {
     }
 
     @Override
-
     public Object getValueAt(int rowIndex, int columnIndex) {
-        if (lista != null && rowIndex < lista.size()) {
-            Object obj = lista.get(rowIndex);
+        CompraFgv compra = lista.get(rowIndex);
 
-            if (obj instanceof CompraprodutoFgv) {
-                CompraprodutoFgv compraProdutoFgv = (CompraprodutoFgv) obj;
-
-                if (compraProdutoFgv != null) {
-                    if (columnIndex == 0) {
-                        return compraProdutoFgv.getProdutoFgv().getNomeFgv();
-                    }
-                    if (columnIndex == 1) {
-                        return compraProdutoFgv.getQuantidadeFgv();
-                    }
-                    if (columnIndex == 2) {
-                        return compraProdutoFgv.getValorUnitarioFgv();
-                    }
-                    if (columnIndex == 3) {
-                        return compraProdutoFgv.getQuantidadeFgv() * compraProdutoFgv.getValorUnitarioFgv();
-                    }
-                }
-            }
+        switch (columnIndex) {
+            case 0:
+                return compra.getIdcompraFgv();
+            case 1:
+                return compra.getQuantidadeFgv();
+            case 2:
+                return compra.getStatusFgv();
+            case 3:
+                return compra.getNomeclienteFgv();
+            default:
+                return "";
         }
-        return "";
     }
 
     @Override
     public String getColumnName(int columnIndex) {
-        if (columnIndex == 0) {
-            return "Nome Produto";
+        switch (columnIndex) {
+            case 0:
+                return "ID";
+            case 1:
+                return "Quantidade";
+            case 2:
+                return "Status";
+            case 3:
+                return "Cliente";
+            default:
+                return "";
         }
-        if (columnIndex == 1) {
-            return "Quantidade";
-        }
-        if (columnIndex == 2) {
-            return "Valor Unitario";
-        }
-        if (columnIndex == 3) {
-            return "Total";
-        }
-        return "";
     }
-
 }

@@ -42,9 +42,9 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_felipe_ronceti"/>
   <table-filter match-name="compraproduto_fgv"/>
-  <table-filter match-name="compra_fgv"/>
-  <table-filter match-name="cliente_fgv"/>
   <table-filter match-name="produto_fgv"/>
   <table-filter match-name="usuario_fgv"/>
+  <table-filter match-name="compra_fgv"/>
   <table-filter match-name="vendedor_fgv"/>
+  <table-filter match-name="cliente_fgv"/>
 </hibernate-reverse-engineering>

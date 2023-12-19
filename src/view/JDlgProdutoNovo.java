@@ -15,7 +15,8 @@ import tools.Util;
  * @author Felipe Ronceti
  */
 public class JDlgProdutoNovo extends javax.swing.JDialog {
-
+        
+        
     Produto_DAO produto_DAO;
     ProdutoFgv produtoFgv;
     ProdutoControlle produtoControlle;
@@ -24,12 +25,13 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
     /**
      * Creates new form JDlgProdutoNovo
      */
+        
     public JDlgProdutoNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Cadastro de Produto");
         setLocationRelativeTo(null);
-        produtoFgv = new ProdutoFgv();
+        
         jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
         produtoControlle = new ProdutoControlle();
         produto_DAO = new Produto_DAO();
@@ -38,6 +40,7 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         jTablel1.setModel(produtoControlle);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,9 +118,8 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
         jDlgProdutoNovoIA.setTitle("Inclusão");
-        jDlgProdutoNovoIA.setTelaAnterior(this);
+         
         jDlgProdutoNovoIA.setVisible(true);
         List lista = produto_DAO.listAll();
         produtoControlle.setList(lista);
@@ -125,31 +127,29 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
-        jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
+      // TODO add your handling code here:
         jDlgProdutoNovoIA.setTitle("Alteração");
         int rowSel = jTablel1.getSelectedRow();
-        produtoFgv = new ProdutoFgv();
-        produtoFgv = produtoControlle.getBean(rowSel);
-        jDlgProdutoNovoIA.setTelaAnterior(this);
+        ProdutoFgv produtoFgv =  produtoControlle.getBean(rowSel);
         jDlgProdutoNovoIA.beanView(produtoFgv);
+        
         jDlgProdutoNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if (Util.perguntar("Deseja execluir o registro") == true) {
+        if (Util.perguntar("Deseja execluir o registro") == true ) {
             int sel = jTablel1.getSelectedRow();
             produtoFgv = produtoControlle.getBean(sel);
             produto_DAO.delete(produtoFgv);
             //atualizar a lista no jtable
             List lista = produto_DAO.listAll();
             produtoControlle.setList(lista);
-
-        } else {
+            
+           } else {
             Util.mensagem("Exclusão cancelada");
         }
-
+        
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**

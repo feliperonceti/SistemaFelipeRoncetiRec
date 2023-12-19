@@ -5,10 +5,7 @@
  */
 package view;
 
-import query.JDlgConsultasClientes;
-import query.JDlgConsultasProdutos;
 import query.JDlgConsultasUsuarios;
-import query.JDlgConsultasVendedores;
 
 /**
  *

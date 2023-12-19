@@ -8,18 +8,18 @@ package view;
 import bean.UsuarioFgv;
 import dao.Usuario_DAO;
 import java.util.List;
-import tools.Util;
 
 /**
  *
  * @author Felipe Ronceti
  */
 public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
-
+    
+    
     private JDlgUsuario jDlgUsuario;
-    UsuarioControlle usuarioControlle;
-    Usuario_DAO usuario_DAO;
-    UsuarioFgv usuarioFgv;
+    private UsuarioControlle usuarioControlle;
+    
+
 
     /**
      * Creates new form JDlgUsuarioPesquisa
@@ -27,21 +27,21 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
     public JDlgUsuarioPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+  
         setLocationRelativeTo(null);
         setTitle("Consultar de Usuários");
-
+        
         usuarioControlle = new UsuarioControlle();
-        usuario_DAO = new Usuario_DAO();
-        usuarioFgv = new UsuarioFgv();
+        Usuario_DAO usuario_DAO = new Usuario_DAO();
         List lista = usuario_DAO.listAll();
         usuarioControlle.setList(lista);
         jTable1.setModel(usuarioControlle);
     }
-
-    public void setTelaAnterior(JDlgUsuario jDlgUsuario) {
+    
+     public void setTelaAnterior(JDlgUsuario jDlgUsuario){
         this.jDlgUsuario = jDlgUsuario;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,14 +116,11 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (jTable1.getSelectedRow() == -1) {
-            Util.mensagem("Selecione uma linha antes");
-        }
         int rowSel = jTable1.getSelectedRow();
-        usuarioFgv = usuarioControlle.getBean(rowSel);
+       UsuarioFgv usuarioFgv =  usuarioControlle.getBean(rowSel);
         jDlgUsuario.beanView(usuarioFgv);
         setVisible(false);
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed

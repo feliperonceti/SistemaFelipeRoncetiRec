@@ -72,7 +72,7 @@ public class Util {
      }
       
      public static double strDouble(String cad){
-           return Double.valueOf(cad);
+           return Integer.valueOf(cad);
      }
       
        public static Date strDate(String cad){
@@ -90,10 +90,6 @@ public class Util {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
            return formato.format(num);
      }
-
-    public static double intDouble(String quantidadeFgv) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
      
 }
 

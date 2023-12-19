@@ -13,20 +13,21 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Felipe Ronceti
  */
-public class CompraControlle extends AbstractTableModel {
 
-    private List lista;
 
+public class CompraControlle extends AbstractTableModel{
+     private List lista;
+    
     public void setList(List lista) {
         this.lista = lista;
-
+        
     }
-
+    
     public CompraFgv getBean(int linha) {
         return (CompraFgv) lista.get(linha);
-
+           
     }
-
+    
     @Override
     public int getRowCount() {
         return lista.size();
@@ -39,28 +40,28 @@ public class CompraControlle extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-
+        
         CompraFgv compra = (CompraFgv) lista.get(rowIndex);
-
+        
         if (columnIndex == 0) {
-
+       
             return compra.getIdcompraFgv();
         }
         if (columnIndex == 1) {
-            return compra.getClienteFgv().getNomeFgv();
+            return compra.getNomeclienteFgv();
         }
         if (columnIndex == 2) {
-            return compra.getVendedorFgv().getNomeFgv();
+            return compra.getValorcompraFgv();
         }
         if (columnIndex == 3) {
-            return compra.getDatadaCompraFgv();
+            return compra.getQuantidadeFgv();
         }
-        if (columnIndex == 4) {
-            return compra.getValorTotalFgv();
+         if (columnIndex == 4) {
+            return compra.getStatusFgv();
         }
         return "";
     }
-
+    
     @Override
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
@@ -70,14 +71,18 @@ public class CompraControlle extends AbstractTableModel {
             return "Nome Cliente";
         }
         if (columnIndex == 2) {
-            return "Nome Vendedor";
+            return "Valor Compra";
         }
         if (columnIndex == 3) {
-            return "Data";
+            return "Quantidade";
         }
         if (columnIndex == 4) {
-            return "Totalf";
+            return "Status";
         }
         return "";
     }
 }
+
+    
+
+

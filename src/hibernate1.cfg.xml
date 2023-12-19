@@ -45,11 +45,5 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/db_felipe_ronceti?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <mapping class="bean.CompraprodutoFgv"/>
-    <mapping class="bean.ProdutoFgv"/>
-    <mapping class="bean.ClienteFgv"/>
-    <mapping class="bean.UsuarioFgv"/>
-    <mapping class="bean.CompraFgv"/>
-    <mapping class="bean.VendedorFgv"/>
   </session-factory>
 </hibernate-configuration>

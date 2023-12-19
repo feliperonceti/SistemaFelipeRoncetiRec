@@ -6,6 +6,7 @@
 package dao;
 
 import bean.ClienteFgv;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -14,7 +15,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Felipe Ronceti
  */
-public class Cliente_DAO extends DAOAbstract {
+public class Cliente_DAO extends DAOAbstract{  
 
     @Override
     public void insert(Object object) {
@@ -46,47 +47,48 @@ public class Cliente_DAO extends DAOAbstract {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(ClienteFgv.class);
         criteria.add(Restrictions.eq("idcliente_Fgv", id));
-        List Lista = criteria.list();
+        List lista = criteria.list();
         session.getTransaction().commit();
-        return Lista.get(0);
+        return lista.get(0);
 
     }
 
     @Override
     public List listAll() {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteFgv.class);
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        return Lista;
+       session.beginTransaction();
+       Criteria criteria = session.createCriteria(ClienteFgv.class);
+       List lista = criteria.list();
+       session.getTransaction().commit();
+       return (ArrayList) lista;
     }
 
     public List listNome(String nomeFgv) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteFgv.class);
-        criteria.add(Restrictions.like("nomeFgv", "%" + nomeFgv + "%"));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteFgv.class);
+    criteria.add(Restrictions.like("nomeFgv", "%"+nomeFgv+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
     }
-
+    
     public List listEstadocivil(String estadocivilFgv) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteFgv.class);
-        criteria.add(Restrictions.like("estadocivilFgv", "%" + estadocivilFgv + "%"));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteFgv.class);
+    criteria.add(Restrictions.like("estadocivilFgv", "%"+estadocivilFgv+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
     }
-
+    
     public List listNomeEstadocivil(String nomeFgv, String estadocivilFgv) {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(ClienteFgv.class);
-        criteria.add(Restrictions.like("nomeFgv", "%" + nomeFgv + "%"));
-        criteria.add(Restrictions.like("estadocivilFgv", "%" + estadocivilFgv + "%"));
-        List lista = criteria.list();
-        session.getTransaction().commit();
-        return lista;
+    session.beginTransaction();
+    Criteria criteria = session.createCriteria(ClienteFgv.class);
+    criteria.add(Restrictions.like("nomeFgv", "%"+nomeFgv+"%"));
+    criteria.add(Restrictions.like("estadocivilFgv", "%"+estadocivilFgv+"%"));
+    List lista = criteria.list();
+    session.getTransaction().commit();
+    return lista;
+    
     }
-
 }
+   

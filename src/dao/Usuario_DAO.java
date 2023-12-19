@@ -59,7 +59,7 @@ public class Usuario_DAO extends DAOAbstract{
        Criteria criteria = session.createCriteria(UsuarioFgv.class);
        List lista = criteria.list();
        session.getTransaction().commit();
-       return lista;
+       return (ArrayList) lista;
     }
     
     public List listNome(String nomeFgv) {
@@ -88,8 +88,8 @@ public class Usuario_DAO extends DAOAbstract{
     List lista = criteria.list();
     session.getTransaction().commit();
     return lista;
-    }
     
+    }
     
     public UsuarioFgv fazerLogin(String apelidoFgv, String senhaFgv) {
     try {
@@ -109,10 +109,6 @@ public class Usuario_DAO extends DAOAbstract{
 
     return null;
 }
-
-    public List listALL() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
 

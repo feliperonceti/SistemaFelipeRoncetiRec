@@ -14,9 +14,8 @@ import view.ClienteControlle;
  * @author Felipe Ronceti
  */
 public class JDlgConsultasClientes extends javax.swing.JDialog {
-
-    ClienteControlle clientecontrolle;
-    Cliente_DAO cliente_DAO;
+ClienteControlle clientecontrolle;
+Cliente_DAO cliente_DAO;
 
     /**
      * Creates new form JDlgConsultasClientes
@@ -30,8 +29,8 @@ public class JDlgConsultasClientes extends javax.swing.JDialog {
         List lista = cliente_DAO.listAll();
         clientecontrolle.setList(lista);
         jTable1.setModel(clientecontrolle);
-
-    }
+                
+         }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,28 +135,28 @@ public class JDlgConsultasClientes extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here
-        if (jTxtNome.getText().equals("") && jCboEstadocivil.getSelectedItem().equals("")) {
-            List lista = cliente_DAO.listAll();
-            clientecontrolle.setList(lista);
-        } else {
-            if (jTxtNome.getText().equals("") && !jTxtNome.getText().equals("")) {
-                List lista = cliente_DAO.listNomeEstadocivil(jTxtNome.getText(), (String) jCboEstadocivil.getSelectedItem());
-                clientecontrolle.setList(lista);
-            } else {
-                if (!jTxtNome.getText().equals("")) {
-                    List lista = cliente_DAO.listNome(jTxtNome.getText());
-                    clientecontrolle.setList(lista);
+        if (jTxtNome.getText().equals("")&& jCboEstadocivil.getSelectedItem().equals("")) {
+    List lista = cliente_DAO.listAll();
+        clientecontrolle.setList(lista);
+} else {
+if (jTxtNome.getText().equals("")&& !jTxtNome.getText().equals("")) {
+List lista = cliente_DAO.listNomeEstadocivil(jTxtNome.getText(), (String) jCboEstadocivil.getSelectedItem());
+        clientecontrolle.setList(lista);
+} else {
+    if (!jTxtNome.getText().equals("")) {
+        List lista = cliente_DAO.listNome(jTxtNome.getText());
+        clientecontrolle.setList(lista);
+        
+} else {
 
-                } else {
-
-                    if (!jCboEstadocivil.getSelectedItem().equals("")) {
-                        List lista = cliente_DAO.listEstadocivil((String) jCboEstadocivil.getSelectedItem());
-                        clientecontrolle.setList(lista);
-                    }
-                }
-            }
-        }
-
+if (!jCboEstadocivil.getSelectedItem().equals("")) {
+    List lista = cliente_DAO.listEstadocivil((String) jCboEstadocivil.getSelectedItem());
+    clientecontrolle.setList(lista);
+}
+}
+}
+}
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

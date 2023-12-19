@@ -8,33 +8,38 @@ package view;
 import bean.ProdutoFgv;
 import dao.Produto_DAO;
 import java.util.List;
-import tools.Util;
 
 /**
  *
  * @author Felipe Ronceti
  */
 public class JDlgProdutoNovoIA extends javax.swing.JDialog {
-
+    
     Produto_DAO produto_DAO;
     ProdutoControlle produtoControlle;
-    JDlgProdutoNovo jDlgProdutoNovo;
+
+    public JDlgProdutoNovoIA() {
+    }
 
     /**
      * Creates new form JDlgProdutoNovoIA
      */
+   
     public JDlgProdutoNovoIA(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-
+        
         produtoControlle = new ProdutoControlle();
         produto_DAO = new Produto_DAO();
         List lista = produto_DAO.listAll();
         produtoControlle.setList(lista);
+        
 
+        
     }
-
+        
+    
     public ProdutoFgv viewBean() {
         ProdutoFgv produtoFgv = new ProdutoFgv();
         int id = Integer.valueOf(jTxtCodigo.getText());
@@ -42,27 +47,25 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
         produtoFgv.setNomeFgv(jTxtNome.getText());
         produtoFgv.setMarcaFgv(jTxtMarca.getText());
         produtoFgv.setCorFgv(jTxtCor.getText());
-        produtoFgv.setPrecoprodutoFgv(Util.strDouble(jTxtPreco.getText()));
-        produtoFgv.setQuantidadeFgv(Util.strInt(jTxtQuantidade.getText()));
+        produtoFgv.setPrecoprodutoFgv(jTxtPreco.getText());
+        produtoFgv.setQuantidadeFgv(jTxtQuantidade.getText());
         return produtoFgv;
 
+       
     }
-
-    public void beanView(ProdutoFgv produto) {
+      
+       
+        public void beanView(ProdutoFgv produto) {
         String cad = String.valueOf(produto.getIdprodutoFgv());
-        jTxtCodigo.setText(cad);
+        jTxtCodigo.setText(cad);        
         jTxtNome.setText(produto.getNomeFgv());
         jTxtMarca.setText(produto.getMarcaFgv());
         jTxtCor.setText(produto.getCorFgv());
-        jTxtPreco.setText(Util.doubleStr(produto.getPrecoprodutoFgv()));
-        jTxtQuantidade.setText(Util.intStr(produto.getQuantidadeFgv()));
+        jTxtPreco.setText(produto.getPrecoprodutoFgv());
+        jTxtQuantidade.setText(produto.getQuantidadeFgv());
+        
 
-    }
-
-    public void setTelaAnterior(JDlgProdutoNovo jDlgProdutoNovo) {
-        this.jDlgProdutoNovo = jDlgProdutoNovo;
-    }
-
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -229,38 +232,27 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         // TODO add your handling code here:
-
+      
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        ProdutoFgv produtoFgv = viewBean();
-        if (getTitle().equals("Inclusão")) {
-            produto_DAO.insert(produtoFgv);
-            List lista = produto_DAO.listAll();
-            jDlgProdutoNovo.produtoControlle.setList(lista);
-            setVisible(false);
-        } else if (getTitle().equals("Alteração")) {
-            produto_DAO.update(produtoFgv);
-            List lista = produto_DAO.listAll();
-            jDlgProdutoNovo.produtoControlle.setList(lista);
-            setVisible(false);
-        }else{
-            Util.mensagem("Erro");
-        }
-               
-                
+         ProdutoFgv produtoFgv = viewBean();
+          produto_DAO.insert(produtoFgv);
+          produto_DAO.update(produtoFgv);
+        setVisible(false);
+        
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-
-        setVisible(false);
+        
+         setVisible(false);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

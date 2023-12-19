@@ -5,7 +5,6 @@
  */
 package dao;
 
-import DAO.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

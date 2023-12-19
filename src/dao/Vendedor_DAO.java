@@ -90,6 +90,5 @@ public class Vendedor_DAO extends DAOAbstract{
     return lista;
     }
     
-  
 }
    

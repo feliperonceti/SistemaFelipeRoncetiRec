@@ -60,7 +60,7 @@ public class Produto_DAO extends DAOAbstract{
        Criteria criteria = session.createCriteria(ProdutoFgv.class);
        List lista = criteria.list();
        session.getTransaction().commit();
-       return lista;
+       return (ArrayList) lista;
     }
 
 public List listNome(String nomeFgv) {
@@ -89,8 +89,7 @@ public List listNome(String nomeFgv) {
     List lista = criteria.list();
     session.getTransaction().commit();
     return lista;
+    
     }
-    
-    
 }
     

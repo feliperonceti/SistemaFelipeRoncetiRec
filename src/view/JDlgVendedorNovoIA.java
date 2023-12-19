@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Gustavo
+ * @author Felipe Ronceti
  */
 public class JDlgVendedorNovoIA extends javax.swing.JDialog {
 

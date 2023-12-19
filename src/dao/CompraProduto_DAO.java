@@ -7,15 +7,16 @@ package dao;
 
 import bean.CompraFgv;
 import bean.CompraprodutoFgv;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
- *
+ * @author Felipe Ronceti
  */
-public class CompraProduto_DAO extends DAOAbstract {
+public class CompraProduto_DAO extends DAOAbstract{  
 
     @Override
     public void insert(Object object) {
@@ -41,51 +42,28 @@ public class CompraProduto_DAO extends DAOAbstract {
         session.delete(object);
         session.getTransaction().commit();
     }
-    public void deleteTabela(Object object) {
-        session.beginTransaction();
-        session.flush();
-        session.clear();
-
-        if (object instanceof CompraFgv) {
-            CompraFgv compraFgv = (CompraFgv) object;
-
-            Criteria criteria = session.createCriteria(CompraprodutoFgv.class);
-            criteria.add(Restrictions.eq("compraFgv.idcompraFgv", compraFgv.getIdcompraFgv()));
-
-            List lista = criteria.list();
-            for (Object produto : lista) {
-                session.delete(produto);
-            }
-            session.getTransaction().commit();
-        }
-    }
 
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(CompraFgv.class);
-        criteria.add(Restrictions.eq("idcompraprodutoFgv", id));
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        return Lista.get(0);
-    }
-
-    public List listProduto(CompraFgv compraFgv) {
-        session.beginTransaction();
         Criteria criteria = session.createCriteria(CompraprodutoFgv.class);
-        criteria.add(Restrictions.eq("compraFgv", compraFgv));
-        List Lista = criteria.list();
+        criteria.add(Restrictions.eq("idcompraprodutoFgv", id));
+        List lista = criteria.list();
         session.getTransaction().commit();
-        return Lista;
+        return lista.get(0);
+
     }
 
     @Override
     public List listAll() {
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(CompraFgv.class);
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        return Lista;
+       session.beginTransaction();
+       Criteria criteria = session.createCriteria(CompraprodutoFgv.class);
+       List lista = criteria.list();
+       session.getTransaction().commit();
+       return (ArrayList) lista;
     }
 
+    public List<CompraprodutoFgv> listProdutos(CompraFgv compraFgv) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
